@@ -13,14 +13,14 @@ class MovieServiceTest {
 
     @Test
     void contextLoads() {
-        // Ensures the Spring application context and MovieService bean load successfully
+        // Verifies that the Spring application context and MovieService bean load correctly
         assertNotNull(movieService, "MovieService bean should be loaded");
     }
 
     @Test
-    void getAllMovies_ShouldReturnMovieList() {
-        // Test business logic for fetching movies
+    void getAllMovies_ShouldReturnList() {
+        // Ensures the service layer logic runs cleanly in the test environment
         var movies = movieService.getAllMovies();
-        assertNotNull(movies, "The returned movie list should not be null");
+        assertNotNull(movies, "The movie list should not be null");
     }
 }
