@@ -1,4 +1,4 @@
-package com.gameflix.gameflix;
+package com.gameflix;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -8,12 +8,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class MovieServiceTest {
 
-    @Autowired
+    @Autowired(required = false)
     private MovieService movieService;
 
     @Test
     void getAllMovies_ShouldReturnList() {
-        assertNotNull(movieService);
+        assertNotNull(movieService, "MovieService bean should be loaded");
         var movies = movieService.getAllMovies();
         assertNotNull(movies);
     }
@@ -25,7 +25,7 @@ class MovieServiceTest {
 
     @Test
     void testServiceLogicValidation() {
-        assertNotNull(movieService);
+        assertNotNull(movieService, "MovieService bean should be loaded");
         var movies = movieService.getAllMovies();
         assertNotNull(movies);
     }
