@@ -1,6 +1,5 @@
 package com.gameflix.gameflix;
 
-import com.gameflix.gameflix.service.MovieService; // <--- This fixes the missing symbol error!
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ class MovieServiceTest {
 
     @Test
     void getAllMovies_ShouldReturnList() {
+        assertNotNull(movieService);
         var movies = movieService.getAllMovies();
         assertNotNull(movies);
     }
@@ -25,6 +25,7 @@ class MovieServiceTest {
 
     @Test
     void testServiceLogicValidation() {
+        assertNotNull(movieService);
         var movies = movieService.getAllMovies();
         assertNotNull(movies);
     }
