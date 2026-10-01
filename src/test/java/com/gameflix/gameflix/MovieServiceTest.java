@@ -1,6 +1,6 @@
 package com.gameflix.gameflix;
 
-import com.gameflix.MovieService; // Import MovieService from its actual package
+import com.gameflix.MovieService;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
