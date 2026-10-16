@@ -30,4 +30,20 @@ class UserServiceTest {
         boolean isAuthenticated = userService.authenticateUser("authuser123", "mypassword");
         Assertions.assertTrue(isAuthenticated, "User should authenticate with correct credentials");
     }
+
+    @Test
+    void testRegisterDuplicateUser_ShouldFail() {
+        // Test that registering the exact same username twice returns false
+        userService.registerUser("dupuser123", "password123");
+        boolean isRegisteredAgain = userService.registerUser("dupuser123", "differentpassword");
+        Assertions.assertFalse(isRegisteredAgain, "Registering a duplicate username should fail");
+    }
+
+    @Test
+    void testAuthenticateUser_InvalidPassword_ShouldFail() {
+        // Test that authenticating with an incorrect password returns false
+        userService.registerUser("failuser123", "correctpassword");
+        boolean isAuthenticated = userService.authenticateUser("failuser123", "wrongpassword");
+        Assertions.assertFalse(isAuthenticated, "Authentication should fail with an incorrect password");
+    }
 }
