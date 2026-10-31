@@ -1,8 +1,8 @@
 package com.gameflix;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Map;
 
 @RestController
@@ -25,7 +25,7 @@ public class AuthController {
 
         boolean success = userService.registerUser(username, password);
         if (!success) {
-            return ResponseEntity.status(400).body(Map.of("message", "Username already exists"));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message", "Username already exists"));
         }
 
         return ResponseEntity.ok(Map.of("message", "User registered successfully"));
@@ -38,7 +38,7 @@ public class AuthController {
 
         boolean isAuthenticated = userService.authenticateUser(username, password);
         if (!isAuthenticated) {
-            return ResponseEntity.status(401).body(Map.of("message", "Invalid username or password"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Invalid username or password"));
         }
 
         return ResponseEntity.ok(Map.of("message", "Login successful"));
